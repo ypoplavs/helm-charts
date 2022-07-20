@@ -39,7 +39,7 @@ jobs:
       # Runnning test suite
       - name: Run test suite
         id: testsuite
-        uses: actions/testkube-docker-action@v1
+        uses: kubeshop/testkube-docker-action@v1
         with:
           command: get
           resource: tests 
