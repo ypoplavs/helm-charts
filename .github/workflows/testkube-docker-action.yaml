@@ -47,4 +47,4 @@ jobs:
 
       # Use the output from the `testsuite` step
       - name: Get the output result
-        run: echo RESULT="${{ steps.testsuite.outputs.result }}" >> $GITHUB_ENV
+        run: echo RESULT='${{ steps.testsuite.outputs.result }}' >> $GITHUB_ENV
