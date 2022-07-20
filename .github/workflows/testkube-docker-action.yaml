@@ -14,8 +14,8 @@ env:
   POSTMAN_TEST_FILE_PATH: test/postman
 
 jobs:
-  test_suite_run_dev:
-    name: test suite for DEV GKE.
+  get_dev_test:
+    name: get test for DEV GKE.
     runs-on: ubuntu-latest
     steps:
       # Setup gcloud CLI
@@ -36,15 +36,15 @@ jobs:
           location: ${{ env.GKE_ZONE_DEV }}
           credentials: ${{ secrets.GKE_SA_KEY }}
 
-      # Runnning test suite
-      - name: Run test suite
-        id: testsuite
+      # Getting test CRD
+      - name: Get test CRD
+        id: test
         uses: kubeshop/testkube-docker-action@v1
         with:
           command: get
           resource: test 
           parameters: failing-soapui --crd-only
 
-      # Use the output from the `testsuite` step
+      # Use the output from the `test` step
       - name: Get the output result
-        run: echo '${{ steps.testsuite.outputs.result }}'
+        run: echo '${{ steps.test.outputs.result }}'
