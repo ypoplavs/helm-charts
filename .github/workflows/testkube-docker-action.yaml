@@ -36,7 +36,7 @@ jobs:
           location: ${{ env.GKE_ZONE_DEV }}
           credentials: ${{ secrets.GKE_SA_KEY }}
 
-      # Runnning test suite
+      # Runnning test suite.
       - name: Run test suite
         id: testsuite
         uses: kubeshop/testkube-docker-action@v1
