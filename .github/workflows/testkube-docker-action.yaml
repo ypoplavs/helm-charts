@@ -43,7 +43,7 @@ jobs:
         with:
           command: get
           resource: test 
-          parameters: failing-soapui --crd-only
+          parameters: failing-soapui-1 --crd-only
 
       # Use the output from the `test` step
       - name: Get the output result
