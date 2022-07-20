@@ -42,8 +42,8 @@ jobs:
         uses: kubeshop/testkube-docker-action@v1
         with:
           command: get
-          resource: tests 
-          parameters: --crd-only
+          resource: test 
+          parameters: failing-soapui --crd-only
 
       # Use the output from the `testsuite` step
       - name: Get the output result
