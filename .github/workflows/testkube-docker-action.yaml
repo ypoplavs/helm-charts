@@ -33,15 +33,20 @@ jobs:
 
       # Getting test CRD
       - name: Get test CRD
-        id: test
+        id: test--type "k6/script" --name testkube-perf
         uses: kubeshop/testkube-docker-action@v1
         with:
-          command: get
+#          command: get
+#          resource: test 
+#          namespace: testkube
+#          api-key: 1234567890
+#          api-uri: https://demo.testkube.io/results
+#          parameters: sanity
+          command: create
           resource: test 
           namespace: testkube
-          api-key: 1234567890
-          api-uri: https://demo.testkube.io/results
-          parameters: sanity
+          parameters: "--type \"k6/script\" --name testkube-github-action"
+          stdin: "import http from 'k6/http';\nimport { sleep,check } from 'k6';\n\nexport default function () {\n  const baseURI = `${__ENV.TESTKUBE_HOMEPAGE_URI || 'https://testkube.kubeshop.io'}`\n  check(http.get(`${baseURI}/`), {\n    'check testkube homepage home page': (r) =>\n      r.body.includes('Your Friendly Cloud-Native Testing Framework for Kubernetes'),\n  });\n\n\n  sleep(1);\n}\n"
 
       # Use the output from the `test` step
       - name: Get the output result
