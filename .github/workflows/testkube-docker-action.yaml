@@ -38,7 +38,10 @@ jobs:
         with:
           command: get
           resource: test 
-          parameters: failing-soapui --crd-only
+          namespace: testkube
+          api-key: 1234567890
+          api-uri: https://demo.testkube.io/results
+          parameters: failing-soapui
 
       # Use the output from the `test` step
       - name: Get the output result
