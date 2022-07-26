@@ -72,12 +72,10 @@ jobs:
           parameters: testkube-github-action
 
       # Use the output from the `Get test` step
-      - name: Get the output result
-        run: |
-          result="${{ steps.get_test.outputs.result }}"
-          result="${result//'%'/'%25'}"
-          result="${result//'{'/'%7B'}"
-          result="${result//'}'/'%7D'}"
-          result="${result//$'\n'/'%0A'}"
-          result="${result//$'\r'/'%0D'}"
-          echo '$result'
+      #- name: Get the output result
+      #  run: |
+      #    result="${{ steps.get_test.outputs.result }}"
+      #    result="${result//'%'/'%25'}"
+      #    result="${result//$'\n'/'%0A'}"
+      #    result="${result//$'\r'/'%0D'}"
+      #    echo '$result'
