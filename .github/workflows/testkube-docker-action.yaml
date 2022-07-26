@@ -14,8 +14,8 @@ env:
   POSTMAN_TEST_FILE_PATH: test/postman
 
 jobs:
-  get_dev_test:
-    name: get test for DEV GKE.
+  test_worflow:
+    name: test workflow for DEV GKE.
     runs-on: ubuntu-latest
     steps:
       # Setup gcloud CLI
@@ -76,6 +76,8 @@ jobs:
         run: |
           result="${{ steps.get_test.outputs.result }}"
           result="${result//'%'/'%25'}"
+          result="${result//'{'/'%7B'}"
+          result="${result//'}'/'%7D'}"
           result="${result//$'\n'/'%0A'}"
           result="${result//$'\r'/'%0D'}"
-          echo "$result"
+          echo '$result'
