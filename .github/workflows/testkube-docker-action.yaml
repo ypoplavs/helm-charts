@@ -73,4 +73,9 @@ jobs:
 
       # Use the output from the `Get test` step
       - name: Get the output result
-        run: echo '${{ steps.get_test.outputs.result }}'
+        run: |
+          result="${{ steps.get_test.outputs.result }}"
+          result="${result//'%'/'%25'}"
+          result="${result//$'\n'/'%0A'}"
+          result="${result//$'\r'/'%0D'}"
+          echo '$result'
