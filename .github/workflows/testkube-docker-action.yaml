@@ -40,8 +40,8 @@ jobs:
           resource: test 
           namespace: testkube
           api-key: 1234567890
-#          api-uri: https://demo.testkube.io/results
-          parameters: failing-soapui
+          api-uri: https://demo.testkube.io/results
+          parameters: sanity
 
       # Use the output from the `test` step
       - name: Get the output result
