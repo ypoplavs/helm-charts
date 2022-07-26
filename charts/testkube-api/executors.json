@@ -1,5 +1,15 @@
 [
     {
+        "name": "ginkgo-executor",
+        "executor": {
+            "executor_type": "job",
+            "image": "kubeshop/testkube-ginkgo-executor:0.0.4",
+            "types":["ginkgo/test"],
+            "content_types": ["string", "file-uri", "git-file", "git-dir"],
+            "features": ["artifacts", "junit-report"]
+        }
+    },
+    {
         "name": "maven-executor",
         "executor": {
             "executor_type": "job",
@@ -43,7 +53,7 @@
         "name": "k6-executor",
         "executor": {
             "executor_type": "job",
-            "image": "kubeshop/testkube-k6-executor:0.0.8",
+            "image": "kubeshop/testkube-k6-executor:0.0.9",
             "types":["k6/script"],
             "content_types": ["string", "file-uri", "git-file"],
             "features": []
