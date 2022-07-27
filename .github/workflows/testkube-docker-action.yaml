@@ -79,3 +79,39 @@ jobs:
       #    result="${result//$'\n'/'%0A'}"
       #    result="${result//$'\r'/'%0D'}"
       #    echo '$result'
+
+      # Prepare test suite
+      - name: Prepare test suite
+        run: |-
+          # Downloading test suite:
+          curl -LOs https://raw.githubusercontent.com/kubeshop/testkube/main/${{ env.POSTMAN_TEST_FILE_PATH }}/${{ env.POSTMAN_TEST_FILE_NANE }}
+
+          # Clean Test suite:
+          kubectl -n testkube delete test sanity || true
+          kubectl -n testkube delete secret sanity-secrets || true
+
+      # Disabling telemetry
+      - name: Disable telemetry
+        id: disable_telemetry
+        uses: kubeshop/testkube-docker-action@v1
+        with:
+          command: disable
+          resource: telemetry
+
+      # Creating test suite
+      - name: Create test_testsuite
+        id: create_test_suite
+        uses: kubeshop/testkube-docker-action@v1
+        with:
+          command: create
+          resource: test
+          parameters: "-f ./${{ env.POSTMAN_TEST_FILE_NANE }} --name sanity --type postman/collection  -v api_uri=http://testkube-api-server:8088 -v test_api_uri=http://testkube-api-server:8088 -v test_type=postman/collection -v test_name=fill-me -v execution_name=fill-me"
+
+      # Running test
+      - name: Run test
+        id: run_test
+        uses: kubeshop/testkube-docker-action@v1
+        with:
+          command: run
+          resource: test
+          parameters: "sanity -f"
