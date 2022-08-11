@@ -98,6 +98,13 @@ jobs:
           command: disable
           resource: telemetry
 
+      # Get version
+      - name: Get version
+        id: get_version
+        uses: kubeshop/testkube-docker-action@v1
+        with:
+          command: version
+
       # Creating test suite
       - name: Create test_testsuite
         id: create_test_suite
