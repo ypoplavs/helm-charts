@@ -8,7 +8,7 @@ kubeVersion: ">=1.16.0-0"
 
 sources:
   - "https://github.com/kubeshop/helm-charts/tree/main/charts"
-
+ 
 keywords:
   - "kusk-gateway"
   - "kusk-gateway-api"
@@ -17,12 +17,6 @@ keywords:
 
 type: application
 
-<<<<<<< Updated upstream
 version: 0.1.11
 
 appVersion: "v1.1.3"
-=======
-version: 0.1.17
-
-appVersion: "v1.1.5"
->>>>>>> Stashed changes
