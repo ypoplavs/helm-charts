@@ -5,9 +5,9 @@ metadata:
   labels:
     {{- include "mongodb.labels" . | nindent 4 }}
     helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    job-name: pre-upgrade
+    job-name: post-upgrade
   annotations:
-    "helm.sh/hook": pre-upgrade
+    "helm.sh/hook": post-upgrade
     "helm.sh/hook-weight": "5"
     "helm.sh/hook-delete-policy": hook-succeeded,before-hook-creation
 spec:
@@ -20,7 +20,7 @@ spec:
     spec:
       serviceAccountName: "{{ .Values.preUpgradeHook.name }}"
       containers:
-      - name: kubectl
+      - name: mongo
         image: "k8s.gcr.io/hyperkube:v1.12.1"
         imagePullPolicy: "IfNotPresent"
         command:
@@ -36,14 +36,13 @@ spec:
             echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-6.0.list;
             apt-get update;
             apt install mongodb-org-tools -y;
-            echo "Starting MongoDB Backup";
+            echo "Starting MongoDB Restore";
             NOW="$(date +"%F")-$(date +"%T")";
             FILE="mongodb_dump-$NOW";
-            mongodump --uri=mongodb://testkube-mongodb:27017  --out=/mongodump/db/$FILE;
-            kubectl scale deployment testkube-mongodb --replicas=0 -n testkube;
+            mongorestore --uri=mongodb://testkube-mongodb:27017 /mongodump/db/$FILE/testkube;
+
             sleep 2;
-            kubectl delete pvc testkube-mongodb -n testkube || echo "MongoDB volume not found. Continuing with creating a new one";
-            kubectl run testkube-mongo-dump --image=mongo:4 -n testkube;
+            kubectl delete pod testkube-mongo-dump --image=mongo:4 -n testkube;
             else echo "MongoDB is up-to-date"; fi
 
       restartPolicy: Never

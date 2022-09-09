@@ -11,10 +11,10 @@ spec:
     spec:
       containers:
       - name: certificate-renewal
-        image: {{ .Values.certificateImage }}:{{ .Values.image.tag | default .Chart.AppVersion }}
+        image: yuliapjv/ypopl:operator-for-arm-bash-v1
         imagePullPolicy: Always
         command:
-        - /bin/sh
+        - /bin/bash
         - -c
         - ./create_cert.sh
         env:
@@ -46,10 +46,10 @@ spec:
         spec:
           containers:
           - name: certificate-renewal
-            image: {{ .Values.certificateImage }}:{{ .Values.image.tag | default .Chart.AppVersion }}
+            image: yuliapjv/ypopl:operator-for-arm-bash-v1
             imagePullPolicy: Always
             command:
-            - /bin/sh
+            - /bin/bash
             - -c
             - ./create_cert.sh
             env:

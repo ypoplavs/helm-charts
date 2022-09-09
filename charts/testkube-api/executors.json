@@ -13,7 +13,11 @@
         "name": "maven-executor",
         "executor": {
             "executor_type": "job",
+<<<<<<< Updated upstream
             "image": "kubeshop/testkube-maven-executor:0.1.0",
+=======
+            "image": "kubeshop/testkube-maven-executor:0.1.2",
+>>>>>>> Stashed changes
             "types":["maven/project", "maven/test", "maven/integration-test"],
             "content_types": ["git-dir"],
             "features": []
@@ -63,7 +67,11 @@
         "name": "cypress-executor",
         "executor": {
             "executor_type": "job",
+<<<<<<< Updated upstream
             "image": "kubeshop/testkube-cypress-executor:1.1.5",
+=======
+            "image": "kubeshop/testkube-cypress-executor:1.1.7",
+>>>>>>> Stashed changes
             "types":["cypress/project"],
             "content_types": ["git-dir"],
             "features": ["artifacts", "junit-report"]
