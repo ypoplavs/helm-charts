@@ -1,0 +1,8 @@
+helm:
+  parameters:
+    - name: cbe.image-name
+      value: kubeshop/testkube-operator
+      forcestring: true
+    - name: cbe.image-tag
+      value: sha-b8e7065
+      forcestring: true
