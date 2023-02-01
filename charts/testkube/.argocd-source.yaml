@@ -1,7 +1,7 @@
 helm:
   parameters:
-    - name: image.name
-      value: kubeshop/testkube-operator
+    - name: image.repository
+      value: kubeshop/testkube-dashboard
       forcestring: true
     - name: image.tag
       value: sha-b8e7065
