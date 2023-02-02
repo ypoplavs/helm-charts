@@ -6,3 +6,9 @@ helm:
   - name: testkube-dashboard.image.tag
     value: sha-27f8dfa
     forcestring: true
+  - name: testkube-operator.image.repository
+    value: kubeshop/testkube-operator
+    forcestring: true
+  - name: testkube-operator.image.tag
+    value: sha-7623524
+    forcestring: true
