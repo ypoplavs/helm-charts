@@ -1,0 +1,8 @@
+helm:
+  parameters:
+  - name: testkube-dashboard.image.repository
+    value: kubeshop/testkube-dashboard
+    forcestring: true
+  - name: testkube-dashboard.image.tag
+    value: sha-27f8dfa
+    forcestring: true
