@@ -4,5 +4,5 @@ helm:
       value: kubeshop/testkube-dashboard
       forcestring: true
     - name: testkube-dashboard.image.tag
-      value: sha-b8e7065
+      value: sha-4b4c61a
       forcestring: true
