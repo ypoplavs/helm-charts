@@ -318,7 +318,7 @@ testkube-dashboard:
     registry: docker.io
     repository: kubeshop/testkube-dashboard
     pullPolicy: Always
-    # tag: "main" # it will take tag from appVersion.
+    tag: "sha-5151f07" # it will take tag from appVersion.
 
   ## Testkube Dashboard Pod annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
