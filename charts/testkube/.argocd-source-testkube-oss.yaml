@@ -12,3 +12,9 @@ helm:
   - name: testkube-operator.image.tag
     value: sha-7623524
     forcestring: true
+  - name: testkube-api.image.repository
+    value: kubeshop/testkube-api-server
+    forcestring: true
+  - name: testkube-api.image.tag
+    value: sha-594854c
+    forcestring: true
