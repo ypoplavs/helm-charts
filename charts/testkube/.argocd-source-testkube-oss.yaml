@@ -16,5 +16,5 @@ helm:
     value: kubeshop/testkube-api-server
     forcestring: true
   - name: testkube-api.image.tag
-    value: sha-594854c
+    value: sha-ac833c7
     forcestring: true
