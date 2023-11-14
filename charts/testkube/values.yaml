@@ -826,7 +826,7 @@ testkube-dashboard:
       cpu: "75m"
     limits:
       memory: "150Mi"
-      pu: "100m"
+      cpu: "100m"
 
   # -- Test Connection pod
   testConnection:
