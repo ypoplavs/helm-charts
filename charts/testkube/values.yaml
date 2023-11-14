@@ -820,7 +820,13 @@ testkube-dashboard:
     name: ""
 
   # -- Testkube Dashboard resource settings
-  resources: {}
+  resources:
+    requests:
+      memory: "100Mi"
+      cpu: "75m"
+    limits:
+      memory: "150Mi"
+      pu: "100m"
 
   # -- Test Connection pod
   testConnection:
