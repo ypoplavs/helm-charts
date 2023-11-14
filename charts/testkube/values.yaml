@@ -787,9 +787,9 @@ testkube-dashboard:
     # -- Maximum number of replicas to scale out
     maxReplicas: 3
     # -- Target CPU utilization percentage
-    targetCPUUtilizationPercentage: 5
+    targetCPUUtilizationPercentage: 2
     # -- Target Memory utilization percentage
-    targetMemoryUtilizationPercentage: 5
+    targetMemoryUtilizationPercentage: 2
     # -- Specific autoscaling labels
     labels: {}
     # -- Specific autoscaling annotations
