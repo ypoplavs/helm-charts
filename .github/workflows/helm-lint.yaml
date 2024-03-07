@@ -26,6 +26,7 @@ jobs:
 
           helm dependency build ./charts/testkube
           helm dependency build ./charts/testkube-dashboard
+          ls ./charts/testkube-dashboard/charts
           helm lint ./charts/testkube --with-subcharts --values ./charts/testkube/values.yaml
           
 
