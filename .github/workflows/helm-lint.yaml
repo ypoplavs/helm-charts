@@ -1,8 +1,10 @@
 ## Reference: https://github.com/helm/chart-testing-action
 name: Lint
-on: 
-  push:
-    branches: feat/760-limit-ValidatingWebhookConfiguration
+on:
+  pull_request:
+    # Sequence of patterns matched against refs/heads
+    branches:
+      - develop
 
 permissions:
   contents: write
