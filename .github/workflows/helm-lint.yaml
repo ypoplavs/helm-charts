@@ -24,6 +24,7 @@ jobs:
         run: |
           ls -l ./charts
           cat ./charts/testkube/Chart.yaml
+          helm repo add bitnami https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
           helm dependency build ./charts/testkube
           helm lint ./charts/testkube
 
