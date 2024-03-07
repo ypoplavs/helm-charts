@@ -24,6 +24,7 @@ jobs:
         run: |
           ls -l ./charts
           cat ./charts/testkube/Chart.yaml
+          helm dependency build ./charts/testkube
           helm lint ./charts/testkube
 
       - name: Run helm dependency update
