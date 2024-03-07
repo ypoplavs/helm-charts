@@ -22,12 +22,10 @@ jobs:
           
       - name: Debug
         run: |
-          ls -l ./charts
-          cat ./charts/testkube/Chart.yaml
           helm repo add bitnami https://charts.bitnami.com/bitnami
 
           helm dependency build ./charts/testkube
-          helm lint ./charts/testkube
+          helm lint ./charts/testkube --with-subcharts --values ./charts/testkube/values.yaml
 
       # - name: Run helm dependency update
       #   run: |
