@@ -15,8 +15,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Set up Helm
         uses: azure/setup-helm@v4
@@ -27,6 +25,7 @@ jobs:
         run: | 
          helm dependency build ./charts/testkube
          helm lint ./charts/testkube
+         helm tenplate ./charts/testkube
 
       # - name: helm-check
       #   uses: igabaydulin/helm-check-action@0.2.0
