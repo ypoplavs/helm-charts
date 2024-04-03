@@ -25,7 +25,7 @@ jobs:
         run: | 
          helm dependency build ./charts/testkube
          helm lint ./charts/testkube
-         helm tenplate ./charts/testkube
+         helm template ./charts/testkube
 
       # - name: helm-check
       #   uses: igabaydulin/helm-check-action@0.2.0
