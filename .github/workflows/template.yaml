@@ -22,13 +22,16 @@ jobs:
         uses: azure/setup-helm@v4
         with:
           version: v3.14.1
+          
       - name: Dependency build
-        run: helm dependency build ./charts/testkube
+        run: | 
+         helm dependency build ./charts/testkube
+         helm lint ./charts/testkube
 
-      - name: helm-check
-        uses: igabaydulin/helm-check-action@0.2.0
-        env:
-          CHART_LOCATION: ./charts/testkube
+      # - name: helm-check
+      #   uses: igabaydulin/helm-check-action@0.2.0
+      #   env:
+      #     CHART_LOCATION: ./charts/testkube
 
 
 
